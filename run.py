@@ -7,7 +7,8 @@ colorama_init()
 
 # backend_p = sp.Popen(["flask", "--app", "backend/main", "run"], stdout=sp.PIPE, stderr=sp.PIPE, stdin=sp.PIPE, text=True)
 # frontend_p = sp.Popen(["npm", "run", "dev"], cwd="./frontend/", shell=True, stdout=sp.PIPE, stderr=sp.PIPE, stdin=sp.PIPE, text=True)
-backend_p = sp.Popen(["flask", "--app", "backend/main", "run"], stdin=sp.PIPE, text=True)
+flask_exe = "backend/venv/Scripts/flask"
+backend_p = sp.Popen([flask_exe, "--app", "backend/main", "run"], stdin=sp.PIPE, text=True)
 frontend_p = sp.Popen(["npm", "run", "dev"], cwd="./frontend/", shell=True, stdin=sp.PIPE, text=True)
 
 try:
