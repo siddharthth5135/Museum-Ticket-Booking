@@ -19,12 +19,13 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-init_message = f"*You are an assistant chatbot for a museum information and ticket booking system. DO NOT use markdown styles, only text. Ask how can I help you. If user asks anything unrelated say I can't help you with that. Keep your responses short and DO NOT use ** in the response.*"
+init_message = f"*You are an assistant chatbot for a museum information and ticket booking system. DO NOT use markdown styles, only text. Ask how can I help you. If user asks anything unrelated say I can't help you with that. Keep your responses short and DO NOT use ** in the response.*\n\n"
 @cross_origin
-@app.route("/chat/get-init-message", methods=['GET'])
+@app.route("/chat/start", methods=['POST'])
 def chat_get_init_message():
     chat.history.clear()
-    return chat.send_message(init_message).text
+    message = request.form['message']
+    return chat.send_message(init_message + message).text
     
 @cross_origin
 @app.route("/chat/send-message", methods=['POST'])

@@ -7,14 +7,14 @@ export default function ChatbotService({ user }) { // Accept user as a prop
     const [userInput, setUserInput] = useState('');
     const [messages, setMessages] = useState([]);
 
-    useEffect(() => {
-        console.log("use effect called");
-        fetch(apiUrl + "/chat/get-init-message", {
-            method: 'GET'
-        })
-            .then(res => res.text())
-            .then(text => setMessages([...messages, { author: 'Chatbot', content: text }]));
-    }, []);
+    // useEffect(() => {
+    //     console.log("use effect called");
+    //     fetch(apiUrl + "/chat/get-init-message", {
+    //         method: 'GET'
+    //     })
+    //         .then(res => res.text())
+    //         .then(text => setMessages([...messages, { author: 'Chatbot', content: text }]));
+    // }, []);
 
     const handleTextareaChange = (e) => {
         setUserInput(e.target.value);
@@ -35,14 +35,25 @@ export default function ChatbotService({ user }) { // Accept user as a prop
 
             const data = new URLSearchParams();
             data.append('message', userInput);
-            fetch(apiUrl + "/chat/send-message", {
-                method: 'POST',
-                body: data,
-            })
-                .then(res => res.text())
-                .then(text => {
-                    setMessages([...messages, userMsg, { author: 'Chatbot', content: text }]);
-                });
+            if (messages.length == 0) {
+                fetch(apiUrl + "/chat/start", {
+                    method: 'POST',
+                    body: data,
+                })
+                    .then(res => res.text())
+                    .then(text => {
+                        setMessages([...messages, userMsg, { author: 'Chatbot', content: text }]);
+                    });
+            } else {
+                fetch(apiUrl + "/chat/send-message", {
+                    method: 'POST',
+                    body: data,
+                })
+                    .then(res => res.text())
+                    .then(text => {
+                        setMessages([...messages, userMsg, { author: 'Chatbot', content: text }]);
+                    });
+            }
 
             setUserInput('');
         }
