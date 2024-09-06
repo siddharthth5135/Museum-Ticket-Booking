@@ -30,7 +30,7 @@ export default function ChatbotService({ user }) { // Accept user as a prop
     const handleSubmit = (e) => {
         if (e) e.preventDefault();
         if (userInput.trim() !== '') {
-            const userMsg = { author: 'User', content: userInput };
+            const userMsg = { author: user.displayName, content: userInput };
             setMessages([...messages, userMsg]);
 
             const data = new URLSearchParams();
