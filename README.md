@@ -1,30 +1,28 @@
-# Chatbot based ticket booking
+# 🎟️ Museum Ticket Booking App
 
-## Quick start
+A responsive and user-friendly web application for booking museum tickets online. Built using **React.js**, this project allows users to browse museum details, select time slots, and book tickets with ease.
 
-Install dependencies for frontend
-```
-cd frontend
-npm install
-``` 
+---
 
-Create virtual environment in the backend
-```
-cd backend
-python -m venv venv
-```
-Activate virtual environment
-```
-source venv/Scripts/activate // linux
-venv/Scripts/activate.bat    // Windows CMD
-venv/Scripts/Activate.ps1    // Windows Powershell
-```
-Install backend dependencies in virtual environment
-```
-pip install -r requirements.txt
-```
+## 🚀 Features
 
-## Run
-```
-python run.py
-```
+- 🖼️ View list of available museums and exhibitions
+- 📅 Choose available date & time slots
+- 👨‍👩‍👧‍👦 Book tickets for multiple visitors
+- 💳 Integrated payment system (placeholder or live)
+- 🔐 Login/Signup system for managing bookings
+- 📄 View & manage ticket history
+
+---
+
+## Backend
+
+- cd backend
+- python main.py
+
+## Frontend
+
+- cd frontend
+- npm run dev
+
+- 
