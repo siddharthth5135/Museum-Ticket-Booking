@@ -35,7 +35,7 @@ function App() {
           </ProtectedRoute>
         } />
         <Route path="/" element={<Landing />} />
-        <Route path='/signuplogin' element={<SignupLogin />} />
+        <Route path='/signuplogin' element={<SignupLogin />} setUser={setUser} />
       </Routes>
       <Footer />
     </Router>
